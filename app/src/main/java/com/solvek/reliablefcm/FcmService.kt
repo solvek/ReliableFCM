@@ -19,7 +19,8 @@ class FcmService : FirebaseMessagingService() {
         super.onMessageReceived(message)
         val data = message.data
         val reliableId = data["reliableId"]
-        Timber.tag(TAG).i("Received a message (id $reliableId, type: ${data["type"]} priority ${message.priority})")
+        val time = reliableId!!.toLong().formatTime()
+        Timber.tag(TAG).i("Received a message (id $reliableId, type ${data["type"]} time $time priority ${message.priority})")
         uploadPush(reliableId)
     }
 
