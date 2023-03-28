@@ -11,21 +11,25 @@ Android app for testing reliable push notifications via Firebase
 
 ![Copy google-services.json](doc/googleservices.png)
 
-# Send push notification using Postman
+# Send push notification using a python script
 
 [More details in documentation](https://firebase.google.com/docs/cloud-messaging/send-message)
 
-## Add a service account (do this only once)
+## Add a service account
+
+Do this only once
 
 1. Open `Project settings` of your project on the Firebase Console
 2. Open `Service accounts` tab 
 3. Tap on `Generate new private key'
 4. Save the file `doc` directory of the project and rename it to `serviceacc.json`
 
-## Find registration token from your android app installation (usually you need do this once for each single installation however server can change the registration token)
+## Find registration token from your android app installation
+
+Usually you need do this once for each single installation however server can change the registration token
 
 1. Start the app
-2. logcat find message `Firebase token:...`
+2. In logcat find message `Firebase token:...`
 3. Get the token value
 
 ## Run python notebook using Google Colab
