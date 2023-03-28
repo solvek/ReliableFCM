@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.solvek.reliablefcm.data.LogRecord
 import com.solvek.reliablefcm.databinding.FragmentFirstBinding
+import com.solvek.reliablefcm.utils.formatTime
 import kotlinx.coroutines.launch
-import java.text.DateFormat
 
 class FirstFragment : Fragment() {
 
@@ -52,12 +52,8 @@ class FirstFragment : Fragment() {
         with(binding.log) {
             text = ""
             records.forEach {record ->
-                append("${FORMAT_TIME.format(record.timestamp)}: ${record.text}\n")
+                append("${record.timestamp.formatTime()}: ${record.text}\n")
             }
         }
-    }
-
-    companion object {
-        private val FORMAT_TIME = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM)
     }
 }
