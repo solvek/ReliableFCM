@@ -32,12 +32,13 @@ exports.sendPush = functions.https.onRequest((request, response) => {
   response.send("Hello from Firebase!");
 });
 
+//exports.sendPushes = functions.https.onRequest((request, response) => {
 exports.periodicPush = functions.pubsub.schedule('every 30 minutes').onRun((context) => {
     functions.logger.log('Periodic task started');
     var db = admin.firestore();
 
-    const tokens = db.collection('tokens');
-    const snapshot = citiesRef.get()
+    const tokensRef = db.collection('tokens');
+    const snapshot = tokensRef.get()
         .then((snapshot) => {
              if (snapshot.empty) {
               functions.logger.log('Not found any tokens');
@@ -45,7 +46,7 @@ exports.periodicPush = functions.pubsub.schedule('every 30 minutes').onRun((cont
             }
 
             snapshot.forEach(doc => {
-                sendPush(doc.token, "Automatic");
+                sendPush(doc.data().token, "Automatic");
             });
         })
         .catch((error) => {
