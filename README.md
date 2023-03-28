@@ -33,7 +33,17 @@ Usually you need do this once for each single installation however server can ch
 
 ## Periodic push notifications
 
-Cloud function `periodicPush` sends push notification to a device. The registration token is hardcoded for now.
+Cloud function `periodicPush` sends push notification to a device.
+
+To setup periodic notifications for your devices do the following
+
+1. Open you project in Firebase Console
+2. Go to Firestore section
+3. Add collection with name `tokens`
+4. Add a document to this collection
+5. The id can be any
+6. Add attribute `token`
+7. Set its value to your registration token
 
 # Send push notification using a python script
 

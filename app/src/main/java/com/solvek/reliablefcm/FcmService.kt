@@ -17,8 +17,9 @@ class FcmService : FirebaseMessagingService() {
 
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
-        val reliableId = message.data["reliableId"]
-        Timber.tag(TAG).i("Received a message (id $reliableId, priority ${message.priority})")
+        val data = message.data
+        val reliableId = data["reliableId"]
+        Timber.tag(TAG).i("Received a message (id $reliableId, type: ${data["type"]} priority ${message.priority})")
         uploadPush(reliableId)
     }
 
