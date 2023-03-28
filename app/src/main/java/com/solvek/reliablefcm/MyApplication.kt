@@ -19,7 +19,7 @@ class MyApplication: Application() {
         Timber.tag(TAG).d("Requesting firebase token")
         FirebaseMessaging.getInstance().token.addOnCompleteListener {
             if (it.isSuccessful) {
-                Timber.tag(TAG).i("Firebase token: ${it.result}")
+                Timber.tag(TAG).i("Firebase token:${it.result}")
                 return@addOnCompleteListener
             }
 
