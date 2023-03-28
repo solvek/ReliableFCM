@@ -10,11 +10,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.ReliableFCM"
+        android:name=".MyApplication"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.ReliableFCM">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
