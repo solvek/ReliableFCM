@@ -1,6 +1,10 @@
 # ReliableFCM
 Android app for testing reliable push notifications via Firebase
 
+# Some internet resources about FCM reliability
+
+* [SoF "FCM Data messages are not working properly"](https://stackoverflow.com/a/51460792/120574)
+
 # Integrate with your Firebase project
 
 1. Create a Firebase project in [Google Firebase Console](https://console.firebase.google.com/)
