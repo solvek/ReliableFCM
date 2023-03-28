@@ -3,4 +3,5 @@
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Log</string>
+    <string name="no_logs">No logs</string>
 </resources>

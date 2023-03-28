@@ -1,6 +1,7 @@
 package com.solvek.reliablefcm.data
 
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface LogDao {
@@ -17,7 +18,7 @@ interface LogDao {
     fun clean(olderThan: Long)
 
     @Query("SELECT * FROM LogRecord ORDER BY timestamp DESC LIMIT :limit")
-    fun get(limit: Int): List<LogRecord>
+    fun get(limit: Int): Flow<List<LogRecord>>
 
     @Query("SELECT * FROM LogRecord ORDER BY timestamp DESC LIMIT :limit OFFSET :offset")
     fun get(limit: Int, offset: Int): List<LogRecord>

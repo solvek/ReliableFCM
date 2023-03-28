@@ -7,7 +7,7 @@ import timber.log.Timber
 class FcmService : FirebaseMessagingService() {
     override fun onNewToken(token: String) {
         super.onNewToken(token)
-        Timber.tag(TAG).i("Firebase token:$token")
+        Timber.tag(TAG).d("Firebase token:$token")
     }
 
     override fun onMessageReceived(message: RemoteMessage) {

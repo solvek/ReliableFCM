@@ -8,6 +8,12 @@ import com.google.firebase.messaging.FirebaseMessaging
 import com.solvek.reliablefcm.data.AppDatabase
 import timber.log.Timber
 
+val Context.myApplication
+    get() = applicationContext as MyApplication
+
+val Context.logDao
+    get() = myApplication.db.logDao()
+
 class MyApplication: Application() {
     override fun onCreate() {
         super.onCreate()
@@ -15,16 +21,10 @@ class MyApplication: Application() {
         initFirebase()
     }
 
-    private val db by lazy {Room.databaseBuilder(
+    val db by lazy {Room.databaseBuilder(
             this,
             AppDatabase::class.java, "reliable.db"
         ).build()}
-
-    private val Context.db
-        get() = (this.applicationContext as MyApplication).db
-
-    val Context.logDao
-        get() = db.logDao()
 
     private fun initFirebase() {
         Timber.tag(TAG).d("Firebase app initializing")
@@ -33,7 +33,7 @@ class MyApplication: Application() {
         Timber.tag(TAG).d("Requesting firebase token")
         FirebaseMessaging.getInstance().token.addOnCompleteListener {
             if (it.isSuccessful) {
-                Timber.tag(TAG).i("Firebase token:${it.result}")
+                Timber.tag(TAG).d("Firebase token:${it.result}")
                 return@addOnCompleteListener
             }
 
