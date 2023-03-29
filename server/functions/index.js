@@ -33,7 +33,7 @@ exports.sendPush = functions.https.onRequest((request, response) => {
 });
 
 //exports.sendPushes = functions.https.onRequest((request, response) => {
-exports.periodicPush = functions.pubsub.schedule('every 30 minutes').onRun((context) => {
+exports.periodicPush = functions.pubsub.schedule('every 60 minutes').onRun((context) => {
     functions.logger.log('Periodic task started');
     var db = admin.firestore();
 
