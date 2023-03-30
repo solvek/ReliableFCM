@@ -20,7 +20,7 @@ class FcmService : FirebaseMessagingService() {
         val data = message.data
         val reliableId = data["reliableId"]
         val time = reliableId!!.toLong().formatTime()
-        Timber.tag(TAG).i("Received a push (id $reliableId, type ${data["type"]} time $time priority ${message.priority})")
+        Timber.tag(TAG).i("========= Received a push (id $reliableId, type ${data["type"]} time $time priority ${message.priority})")
         if (data.getBool("network", true)){
             networkOperation()
         }
